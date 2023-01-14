@@ -1,10 +1,11 @@
 import express from "express";
 import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+
 import authenticationRouter from "./Routes/authenticationRouter.js";
 import inquiriesRouter from "./Routes/inquiriesRouter.js";
 import companiesRouter from "./Routes/companiesRouter.js";
 import usersRouter from "./Routes/usersRouter.js";
-import rateLimit from "express-rate-limit";
 
 const app = express();
 

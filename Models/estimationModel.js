@@ -4,12 +4,21 @@ const estimationSchema = new mongoose.Schema({
   estimation: { type: String, require: [true, "Estimation required !"] },
 
   createdAt: { type: Date, default: new Date() },
-  // Relation many to 1
-  inquiry: {},
+
+  inquiry: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Inquiry",
+  },
+
   // Relation 1 to 1
-  users: {},
+  user: {},
 });
 
-const Estimation = new mongoose.model("Inquiry", estimationSchema);
+estimationSchema.pre(/^find/, function (next) {
+  this.populate({ path: "inquiry", select: "-__v" });
+  next();
+});
+
+const Estimation = new mongoose.model("Estimation", estimationSchema);
 
 export default Estimation;

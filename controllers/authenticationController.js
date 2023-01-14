@@ -105,7 +105,7 @@ class Authentication {
 
       req.user = user;
       //console.log(req.user);
-      console.log(token);
+      //console.log(token);
       next();
     } catch (error) {
       return res.status(401).json({ status: "fail", message: error });

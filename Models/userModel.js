@@ -42,10 +42,7 @@ const userSchema = new mongoose.Schema({
   },
 
   // Ref to the clients's company
-  company: [{ type: mongoose.Schema.ObjectId, ref: "Company" }],
-
-  // TODO
-  estimations: {},
+  company: { type: mongoose.Schema.ObjectId, ref: "Company" },
 });
 
 // Pre middleware running on save/create and hashing the password
