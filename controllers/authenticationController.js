@@ -40,7 +40,7 @@ class Authentication {
           Date.now() + process.env.JWT_COOKIE_EXPIRATION * 24 * 60 * 60 * 1000
         ),
         httpOnly: true,
-        //secure: true,
+        secure: true,
       };
 
       res.cookie("jwt", token, cookieOptions);
@@ -123,6 +123,7 @@ class Authentication {
     res.cookie("jwt", "loggedout", {
       expires: new Date(Date.now() + 500),
       httpOnly: true,
+      secure: true,
     });
     res.status(200).json({ status: "success" });
   };

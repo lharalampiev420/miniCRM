@@ -23,5 +23,9 @@
     "mongoose": "^6.8.3",
     "nodemon": "^2.0.20",
     "pug": "^3.0.2"
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "8.x"
   }
 }
