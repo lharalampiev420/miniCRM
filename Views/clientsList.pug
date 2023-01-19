@@ -1,0 +1,17 @@
+extends base
+
+block content
+   main.main
+        .card-container            
+            each user in users
+                .card
+                    .card__details
+                        h4.card__sub-heading= user.company.name
+                        br
+                        h4.card__sub-heading= user.company.email                       
+                    .card_bottom
+                        .card__data                       
+                            span= `Name: ${user.name}`
+                            span= `Email: ${user.email}`
+                            span= `Position: ${user.position}`
+   script(src='/js/userInquiries.js')

@@ -6,18 +6,13 @@ const companySchema = new mongoose.Schema({
     unique: true,
     required: [true, "Client name is required !"],
   },
-
   email: {
     type: String,
     unique: true,
     required: [true, "Client email is required !"],
   },
-
   // Ref to all users with role Client for the current company
   contactPoints: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
-
-  // TODO
-  inquiries: {},
 });
 
 // pre middleware running on all queries starting with "find"

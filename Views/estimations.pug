@@ -1,0 +1,28 @@
+extends base
+
+block content
+    main.main 
+        .card-container
+                    .card
+                        .card__details
+                            input(name="estimation" id="text" required)
+                        .card_bottom
+                            .card__data                       
+                                span= `Name:`
+                                span= `Email:`                 
+                                span= `Created:`                    
+                            a.btn.btn--green.btn--small(id=`${inquiryId}`) Create   
+                    each estimation in estimations
+                     -const id = estimation._id
+                        .card
+                            .card__details
+                                h4.card__sub-heading= estimation.user.position
+                                p.card__text= estimation.estimation
+                            .card_bottom
+                                .card__data                       
+                                    span= `Name: ${estimation.user.name}`
+                                    span= `Email: ${estimation.user.email}`                 
+                                    span= `Created: ${estimation.createdAt.toLocaleString('en-us')}` 
+                                if logUserEmail === estimation.user.email                        
+                                 a.btn--delete(id=`${id}`) Delete   
+    script(src='/js/estimation.js')

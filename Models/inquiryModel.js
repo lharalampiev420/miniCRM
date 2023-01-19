@@ -2,10 +2,8 @@ import mongoose from "mongoose";
 
 const inquirySchema = new mongoose.Schema({
   inquiry: { type: String, require: [true, "Inquiry can not be empty !"] },
-  //Date.now()
+
   createdAt: { type: Date, default: Date.now() },
-  // fix finish date
-  // finishUntil: { type: Date, default: new Date() },
   //Relation 1 to 1
   contactPoint: {
     type: mongoose.Schema.ObjectId,

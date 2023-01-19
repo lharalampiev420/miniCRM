@@ -75,7 +75,7 @@ class Estimations {
           .status(400)
           .json({ status: "fail", error: "No estimation found !" });
 
-      res.status(400).json({ status: "success" });
+      res.status(200).json({ status: "success" });
     } catch (error) {
       res.status(400).json({ status: "fail", error });
     }

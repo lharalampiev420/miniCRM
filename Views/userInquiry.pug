@@ -1,0 +1,20 @@
+extends base
+                    
+block content
+    main.main 
+        .card-container
+            each inquiry in inquiries
+             - const id = inquiry._id
+                .card
+                    .card__details
+                        h4.card__sub-heading= inquiry.contactPoint.company.name
+                        p.card__text= inquiry.inquiry
+                    .card_bottom
+                        .card__data                       
+                            span= `Name: ${inquiry.contactPoint.name}`
+                            span= `Email: ${inquiry.contactPoint.email}`                 
+                            span= `Position: ${inquiry.contactPoint.position}`
+                            span= `Created: ${inquiry.createdAt.toLocaleString('en-us')}`                    
+                            span= `Company Email: ${inquiry.contactPoint.company.email}` 
+                        a.btn.btn--green.btn--small(href=`${id}`) Estimations
+    script(src='/js/userInquiries.js')                                        

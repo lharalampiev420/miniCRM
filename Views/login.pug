@@ -1,0 +1,22 @@
+doctype html
+html 
+ head 
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/mystyle.css')
+  title Login
+
+body  
+    header.header 
+        nav.nav.nav--user    
+    main.main
+        .login-form
+            h2.heading-secondary.ma-bt-lg Log into your account
+            form.form.form--login       
+                label.form__label(for='email') Email address
+                input#email.form__input(type='email', placeholder='you@example.com', required) 
+                label.form__label(for='password') Password
+                input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                btn.btn-login
+                 button.btn.btn--green Login
+    script(type='module' src='/js/login.js')

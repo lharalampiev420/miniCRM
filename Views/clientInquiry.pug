@@ -1,0 +1,28 @@
+extends base
+                    
+block content
+    main.main 
+        .card-container
+            .card
+                .card__details
+                    input(name="estimation" id="text" required)
+                .card_bottom
+                    .card__data                         
+                    a.btn.btn--green.btn--small(href=``) Create
+            each inquiry in inquiries
+              if inquiry.contactPoint.company.name === user.company.name
+                - const id = inquiry._id
+                    .card
+                        .card__details
+                            h4.card__sub-heading= inquiry.contactPoint.company.name
+                            p.card__text= inquiry.inquiry
+                        .card_bottom
+                            .card__data                       
+                                span= `Name: ${inquiry.contactPoint.name}`
+                                span= `Email: ${inquiry.contactPoint.email}`                 
+                                span= `Position: ${inquiry.contactPoint.position}`
+                                span= `Created: ${inquiry.createdAt.toLocaleString('en-us')}`                    
+                                span= `Company Email: ${inquiry.contactPoint.company.email}`
+                            if inquiry.contactPoint.name === user.name     
+                             a.btn--delete(id=`${id}`) Delete
+    script(src='/js/clientInquiries.js')

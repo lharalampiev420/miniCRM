@@ -88,6 +88,8 @@ class Authentication {
         req.headers.authorization.startsWith("Bearer")
       ) {
         [, token] = req.headers.authorization.split(" ");
+      } else if (req.cookies.jwt) {
+        token = req.cookies.jwt;
       }
 
       // Check if token exists
@@ -99,13 +101,10 @@ class Authentication {
       // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      //console.log(decoded);
-
       const user = await User.findById(decoded.id);
 
       req.user = user;
-      //console.log(req.user);
-      //console.log(token);
+
       next();
     } catch (error) {
       return res.status(401).json({ status: "fail", message: error });
@@ -121,6 +120,14 @@ class Authentication {
       }
       next();
     };
+  };
+
+  logout = async (req, res, next) => {
+    res.cookie("jwt", "loggedout", {
+      expires: new Date(Date.now() + 10 * 1000),
+      httpOnly: true,
+    });
+    res.status(200).json({ status: "success" });
   };
 }
 

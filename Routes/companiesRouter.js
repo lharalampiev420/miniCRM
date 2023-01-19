@@ -8,7 +8,7 @@ router
   .route("/")
   .get(
     Authentication.protect,
-    Authentication.restrictTo("Admin", "User"),
+    Authentication.restrictTo("User"),
     Companies.getAllCompanies
   );
 
