@@ -1,6 +1,7 @@
 import Inquiry from "../Models/inquiryModel.js";
 import Estimation from "../Models/estimationModel.js";
 import User from "../Models/userModel.js";
+import Company from "../Models/companyModel.js";
 
 class Views {
   getInquiries = async function (req, res, next) {
@@ -13,7 +14,7 @@ class Views {
         res.status(200).render("userInquiry", { inquiries, user: req.user });
       }
     } catch (error) {
-      res.status(200).render("userInquiry", error);
+      res.status(400).render("errorView");
     }
   };
 
@@ -38,7 +39,7 @@ class Views {
         user: req.user,
       });
     } catch (error) {
-      res.status(200).render("estimations", error);
+      res.status(400).render("errorView");
     }
   };
 
@@ -48,7 +49,17 @@ class Views {
 
       res.status(200).render("clientsList", { users, user: req.user });
     } catch (error) {
-      res.status(200).render("clientsList", error);
+      res.status(400).render("errorView");
+    }
+  };
+
+  getClient = async function (req, res, next) {
+    try {
+      const users = await User.find({ name: req.params.query, role: "Client" });
+
+      res.status(200).render("clientsList", { users, user: req.user });
+    } catch (error) {
+      res.status(400).render("errorView");
     }
   };
 }

@@ -1,0 +1,17 @@
+doctype html
+html 
+ head 
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/mystyle.css')
+  title Error
+
+body  
+    header.header 
+        nav.nav.nav--user    
+    main.main
+        .error
+          .error__title
+            h2.heading-secondary.heading-secondary--error Something went wrong !   
+        .error__msg You probably try to access wrong route or dont have permission !
+    script(src='/js/error.js')

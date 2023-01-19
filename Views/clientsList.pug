@@ -1,7 +1,23 @@
-extends base
+doctype html
+html 
+ head 
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/mystyle.css')
+  title Clients
 
-block content
-   main.main
+body 
+ // HEADER
+ header.header 
+    nav.nav.nav--inquiries
+        a.nav__el(href='/inquiry') Inquiries
+        form#form(role='search')
+         input#query(type='search' name='q' placeholder='Client name...')
+    nav.nav.nav--user 
+            a.nav__el(href='/clients')  Clients
+            a.nav__el.nav__el--cta Log out
+
+ main.main
         .card-container            
             each user in users
                 .card
@@ -14,4 +30,4 @@ block content
                             span= `Name: ${user.name}`
                             span= `Email: ${user.email}`
                             span= `Position: ${user.position}`
-   script(src='/js/userInquiries.js')
+ script(src='/js/clientList.js')

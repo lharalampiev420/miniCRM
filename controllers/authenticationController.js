@@ -93,10 +93,7 @@ class Authentication {
       }
 
       // Check if token exists
-      if (!token)
-        return res
-          .status(401)
-          .json({ status: "fail", message: "You are not logged in !" });
+      if (!token) return res.status(400).render("errorView");
 
       // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -124,7 +121,7 @@ class Authentication {
 
   logout = async (req, res, next) => {
     res.cookie("jwt", "loggedout", {
-      expires: new Date(Date.now() + 10 * 1000),
+      expires: new Date(Date.now() + 500),
       httpOnly: true,
     });
     res.status(200).json({ status: "success" });

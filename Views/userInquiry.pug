@@ -1,7 +1,21 @@
-extends base
-                    
-block content
-    main.main 
+doctype html
+html 
+ head 
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/mystyle.css')
+  title Inquiries
+
+body 
+ header.header 
+    nav.nav.nav--inquiries
+        a.nav__el(href='/inquiry') Inquiries
+    nav.nav.nav--user 
+            a.nav__el(href='/clients')  Clients
+            a.nav__el.nav__el--cta Log out
+
+
+ main.main 
         .card-container
             each inquiry in inquiries
              - const id = inquiry._id
@@ -16,5 +30,5 @@ block content
                             span= `Position: ${inquiry.contactPoint.position}`
                             span= `Created: ${inquiry.createdAt.toLocaleString('en-us')}`                    
                             span= `Company Email: ${inquiry.contactPoint.company.email}` 
-                        a.btn.btn--green.btn--small(href=`${id}`) Estimations
-    script(src='/js/userInquiries.js')                                        
+                        a.btn.btn--green.btn--small(href=`inquiry/${id}`) Estimations
+script(src='/js/userInquiries.js')

@@ -12,7 +12,6 @@ router
     Companies.getAllCompanies
   );
 
-// For developing purposes
 router.route("/new").post(Companies.createCompany);
 
 export default router;

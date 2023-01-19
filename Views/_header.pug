@@ -1,7 +1,7 @@
 header.header 
     nav.nav.nav--inquiries
         a.nav__el(href='/inquiry') Inquiries
-    nav.nav.nav--user
+    nav.nav.nav--user 
         if user.role === 'User'
             a.nav__el(href='/clients')  Clients
             a.nav__el.nav__el--cta Log out

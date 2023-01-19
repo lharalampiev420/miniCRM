@@ -3,19 +3,16 @@ const logOutBtn = document.querySelector(".nav__el.nav__el--cta");
 // Call API and create estimation
 const createEstimation = async function (estimation, inquiryId) {
   try {
-    const result = await fetch(
-      `http://127.0.0.1:3000/api/inquiries/${inquiryId}/estimations`,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          estimation,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const result = await fetch(`/api/inquiries/${inquiryId}/estimations`, {
+      method: "POST",
+      body: JSON.stringify({
+        estimation,
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
 
     location.reload();
   } catch (error) {
@@ -26,16 +23,13 @@ const createEstimation = async function (estimation, inquiryId) {
 // Call API and delete estimation
 const deleteEstimation = async function (inquiryId, id) {
   try {
-    const res = await fetch(
-      `http://127.0.0.1:3000/api/inquiries/${inquiryId}/estimations/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`/api/inquiries/${inquiryId}/estimations/${id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
 
     location.reload();
   } catch (error) {
@@ -82,7 +76,7 @@ if (document.querySelector(".btn--delete")) {
 
 const logout = async () => {
   try {
-    const res = await fetch("http://127.0.0.1:3000/api/auth/logout", {
+    const res = await fetch("/api/auth/logout", {
       method: "GET",
     });
 
@@ -90,7 +84,6 @@ const logout = async () => {
 
     if (data.status === "success") location.assign("/");
   } catch (err) {
-    console.log(err.response);
     alert("error", "Error logging out! Try again.");
   }
 };

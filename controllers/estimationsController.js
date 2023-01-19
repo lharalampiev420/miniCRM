@@ -22,7 +22,7 @@ class Estimations {
       res.status(400).json({ status: "fail", error });
     }
   };
-  // Fix
+
   getAllEstimations = async function (req, res, next) {
     try {
       const estimations = await Estimation.find();

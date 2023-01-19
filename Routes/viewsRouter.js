@@ -4,8 +4,6 @@ import Authentication from "../controllers/authenticationController.js";
 
 const router = express.Router();
 
-// router.use(Authentication.isLoggedIn);
-
 router.get("/", Views.getLoginForm);
 
 router.get(
@@ -15,17 +13,22 @@ router.get(
   Views.getClients
 );
 
+router.get(
+  "/clients/:query",
+  Authentication.protect,
+  Authentication.restrictTo("User"),
+  Views.getClient
+);
+
 router.get("/inquiry", Authentication.protect, Views.getInquiries);
 
 router.get(
-  "/:id",
+  "/inquiry/:id",
   Authentication.protect,
   Authentication.restrictTo("User"),
   Views.getEstimations
 );
 
-router.get("*", (req, res) =>
-  res.status(404).json({ error: "This route has not been implemented !" })
-);
+router.get("*", (req, res) => res.status(400).render("errorView"));
 
 export default router;
