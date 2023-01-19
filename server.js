@@ -9,14 +9,14 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 mongoose.set("strictQuery", false);
 
-mongoose.connect(DB, { maxPoolSize: 50 }).then(async (client) => {
+mongoose.connect(DB, { maxPoolSize: 50 }).then(async () => {
   console.log("DB connection established !");
 
   const server = app.listen(port, () => {
-    // console.log(`Server running on port ${port}`);
+    console.log(`Server running on port ${port}`);
   });
 });

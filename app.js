@@ -1,3 +1,6 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
 import express from "express";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
@@ -13,10 +16,14 @@ import viewsRouter from "./Routes/viewsRouter.js";
 
 const app = express();
 
-app.set("view engine", "pug");
-app.set("Views", "./Views");
+const __filename = fileURLToPath(import.meta.url);
 
-app.use(express.static("./Public"));
+const __dirname = path.dirname(__filename);
+
+app.set("view engine", "pug");
+app.set("Views", path.join(__dirname, "Views"));
+
+app.use(express.static(path.join(__dirname, "Public")));
 
 // Limit requests from same IP
 const limiter = rateLimit({
