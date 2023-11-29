@@ -7,7 +7,7 @@ class Authentication {
       // Setup needed data
       const { email, password } = req.body;
       const wrongInput = "Please provide email and password !";
-      const userNotFound = "User was not found with the given input !";
+      // const userNotFound = "User was not found with the given input !";
       const wrongData = "Wrong password or email !";
 
       //Check if email and password are given

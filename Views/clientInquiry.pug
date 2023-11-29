@@ -25,4 +25,4 @@ block content
                                 span= `Company Email: ${inquiry.contactPoint.company.email}`
                             if inquiry.contactPoint.name === user.name     
                              a.btn--delete(id=`${id}`) Delete
-    script(src='/js/clientInquiries.js')
+    script(type='module' src='/js/clientInquiries.js')

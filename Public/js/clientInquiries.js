@@ -1,9 +1,11 @@
+import { logout } from "./mixins.js";
+
 const logOutBtn = document.querySelector(".nav__el.nav__el--cta");
 
 // Call API and create inquiry
 const createInquiry = async function (inquiry) {
   try {
-    const result = await fetch(`http://127.0.0.1:3000/api/inquiries`, {
+    const result = await fetch(`/api/inquiries`, {
       method: "POST",
       body: JSON.stringify({
         inquiry,
@@ -21,9 +23,9 @@ const createInquiry = async function (inquiry) {
 };
 
 // Call API and delete estimation
-const deleteEstimation = async function (id) {
+const deleteInquiry = async function (id) {
   try {
-    const res = await fetch(`http://127.0.0.1:3000/api/inquiries/${id}`, {
+    const res = await fetch(`/api/inquiries/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -63,25 +65,10 @@ if (document.querySelector(".btn--delete")) {
 
         const id = e.target.id;
 
-        deleteEstimation(id);
+        deleteInquiry(id);
       }
     });
   });
 }
-
-const logout = async () => {
-  try {
-    const res = await fetch("/api/auth/logout", {
-      method: "GET",
-    });
-
-    const data = await res.json();
-
-    if (data.status === "success") location.assign("/");
-  } catch (err) {
-    console.log(err.response);
-    alert("error", "Error logging out! Try again.");
-  }
-};
 
 logOutBtn.addEventListener("click", logout);

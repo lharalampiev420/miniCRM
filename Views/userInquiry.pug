@@ -31,4 +31,4 @@ body
                             span= `Created: ${inquiry.createdAt.toLocaleString('en-us')}`                    
                             span= `Company Email: ${inquiry.contactPoint.company.email}` 
                         a.btn.btn--green.btn--small(href=`inquiry/${id}`) Estimations
-script(src='/js/userInquiries.js')
+script(type='module' src='/js/userInquiries.js')

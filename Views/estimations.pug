@@ -25,4 +25,4 @@ block content
                                     span= `Created: ${estimation.createdAt.toLocaleString('en-us')}` 
                                 if logUserEmail === estimation.user.email                        
                                  a.btn--delete(id=`${id}`) Delete   
-    script(src='/js/estimation.js')
+    script(type='module' src='/js/estimation.js')
