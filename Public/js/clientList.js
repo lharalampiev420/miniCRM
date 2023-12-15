@@ -28,8 +28,5 @@ form.addEventListener("submit", async (e) => {
     } else {
       alert(data.wrongData);
     }
-  } catch (error) {
-    console.log(error);
-  }
- 
+  } catch (error) {}
 });

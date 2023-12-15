@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const inquirySchema = new mongoose.Schema({
   inquiry: { type: String, require: [true, "Inquiry can not be empty !"] },
 
-  createdAt: { type: Date, default: Date.now() },
-  //Relation 1 to 1
+  createdAt: { type: Date, default: Date.now },
+
   contactPoint: {
     type: mongoose.Schema.ObjectId,
     ref: "User",

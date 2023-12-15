@@ -8,7 +8,6 @@ const logout = async () => {
       method: "GET",
     });
   } catch (err) {
-    console.log(err.response);
     alert("error", "Error logging out! Try again.");
   }
 };

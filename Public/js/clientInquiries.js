@@ -17,9 +17,7 @@ const createInquiry = async function (inquiry) {
     });
 
     location.reload();
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 // Call API and delete estimation
@@ -34,9 +32,7 @@ const deleteInquiry = async function (id) {
     });
 
     location.reload();
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 // Select button for create action
@@ -63,7 +59,7 @@ if (document.querySelector(".btn--delete")) {
       if (!e.detail || e.detail == 1) {
         e.preventDefault();
 
-        const id = e.target.id;
+        const { id } = e.target;
 
         deleteInquiry(id);
       }

@@ -13,10 +13,13 @@ const port = process.env.PORT || 3000;
 
 mongoose.set("strictQuery", false);
 
-mongoose.connect(DB, { maxPoolSize: 50 }).then(async () => {
-  console.log("DB connection established !");
+try {
+  await mongoose.connect(DB, { maxPoolSize: 50 });
+  console.log("DB connection established!");
 
   const server = app.listen(port, () => {
     console.log(`Server running on port ${port}`);
   });
-});
+} catch (error) {
+  console.error("Error connecting to the database:", error);
+}

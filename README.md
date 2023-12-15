@@ -44,7 +44,8 @@ Make sure you have the following software installed on your machine:
 ### Scripts
 
 npm start: Start the application.
-npm run lint: Run eslint check.
+npm run lint: Runs eslint check.
+npm run build: Runs webpack and creates bundles for scripts/css.
 npm run dev: Start the app in dev mode with nodemon and eslint
 
 ### Brief Description

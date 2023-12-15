@@ -17,9 +17,7 @@ const createEstimation = async function (estimation, inquiryId) {
     });
 
     location.reload();
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 // Call API and delete estimation
@@ -34,9 +32,7 @@ const deleteEstimation = async function (inquiryId, id) {
     });
 
     location.reload();
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 // Select button for create action
@@ -68,7 +64,7 @@ if (document.querySelector(".btn--delete")) {
           ".btn.btn--green.btn--small"
         ).id;
 
-        const id = e.target.id;
+        const { id } = e.target;
 
         deleteEstimation(inquiryId, id);
       }

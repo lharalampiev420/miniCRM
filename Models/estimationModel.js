@@ -3,14 +3,13 @@ import mongoose from "mongoose";
 const estimationSchema = new mongoose.Schema({
   estimation: { type: String, require: [true, "Estimation required !"] },
 
-  createdAt: { type: Date, default: new Date() },
+  createdAt: { type: Date, default: Date.now },
 
   inquiry: {
     type: mongoose.Schema.ObjectId,
     ref: "Inquiry",
   },
 
-  // Relation 1 to 1
   user: {},
 });
 
